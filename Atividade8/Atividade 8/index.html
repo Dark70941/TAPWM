@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Atividade 8</title>
+  <script src="funcoes.js"></script>
+</head>
+<body>
+  <h2>1. Maior de Três Números</h2>
+  <input type="number" id="n1">
+  <input type="number" id="n2">
+  <input type="number" id="n3">
+  <button onclick="testarMaior()">Testar</button>
+  <p id="resultadoMaior"></p>
+
+  <h2>2. Números em Ordem Crescente</h2>
+  <input type="number" id="o1">
+  <input type="number" id="o2">
+  <input type="number" id="o3">
+  <button onclick="testarOrdem()">Testar</button>
+  <p id="resultadoOrdem"></p>
+
+  <h2>3. Verificar Palíndromo</h2>
+  <input type="text" id="palavra">
+  <button onclick="testarPalindromo()">Testar</button>
+  <p id="resultadoPalindromo"></p>
+
+  <h2>4. Verificar Subconjunto de Palavras</h2>
+  <input type="text" id="palavraA">
+  <input type="text" id="palavraB">
+  <button onclick="testarSubconjunto()">Testar</button>
+  <p id="resultadoSubconjunto"></p>
+
+  <script>
+    function testarMaior() {
+      const a = Number(document.getElementById("n1").value);
+      const b = Number(document.getElementById("n2").value);
+      const c = Number(document.getElementById("n3").value);
+      document.getElementById("resultadoMaior").innerText = "Maior: " + maiorNumero(a, b, c);
+    }
+
+    function testarOrdem() {
+      const a = Number(document.getElementById("o1").value);
+      const b = Number(document.getElementById("o2").value);
+      const c = Number(document.getElementById("o3").value);
+      document.getElementById("resultadoOrdem").innerText = "Ordem: " + ordenarNumeros(a, b, c).join(", ");
+    }
+
+    function testarPalindromo() {
+      const texto = document.getElementById("palavra").value;
+      const resultado = ehPalindromo(texto) ? "É palíndromo" : "Não é palíndromo";
+      document.getElementById("resultadoPalindromo").innerText = resultado;
+    }
+
+    function testarSubconjunto() {
+      const p1 = document.getElementById("palavraA").value;
+      const p2 = document.getElementById("palavraB").value;
+      document.getElementById("resultadoSubconjunto").innerText = verificarSubconjunto(p1, p2);
+    }
+  </script>
+</body>
+</html>
