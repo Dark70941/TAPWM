@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício Extra </title>
+</head>
+<body>
+  <h1>Exercício Extra</h1>
+
+  <h2>1 Processar 3 Números</h2>
+  <label>Digite 3 números separados por vírgula:</label><br>
+  <input type="text" id="entradaNumeros" placeholder="Ex: 2,3,4">
+  <button onclick="executarExercicio1()">Executar</button>
+  <p id="resultado1"></p>
+
+  <h2>2 Gerar Palavras com 5 Letras</h2>
+  <label>Digite 5 letras separadas por vírgula:</label><br>
+  <input type="text" id="entradaLetras" placeholder="Ex: A,B,C,D,E">
+  <button onclick="executarExercicio2()">Executar</button>
+  <p id="resultado2"></p>
+
+  <script>
+    function somarComApply() {
+      return Math.max.apply(null, arguments);
+    }
+
+    function processarNumeros(array) {
+      if (array.length !== 3) {
+        return "O array deve conter exatamente 3 números.";
+      }
+
+      const soma = Array.prototype.reduce.apply(array, [(acc, val) => acc + val]);
+
+      const quadradoPrimeiro = Math.pow(array[0], 2);
+      const quadradoSegundo = Math.pow(array[1], 2);
+
+      return `A soma dos três números é: ${soma}, o quadrado do primeiro é: ${quadradoPrimeiro} e o quadrado do segundo é: ${quadradoSegundo}`;
+    }
+
+    function gerarPalavras(letras) {
+      if (letras.length !== 5) {
+        return "O array deve conter exatamente 5 letras.";
+      }
+
+      const combinacoes = new Set();
+
+      function permutar(prefixo, restantes) {
+        if (prefixo.length === 5) {
+          combinacoes.add(prefixo);
+          return;
+        }
+
+        for (let i = 0; i < restantes.length; i++) {
+          const novaPrefixo = prefixo + restantes[i];
+          const novaLista = [...restantes.slice(0, i), ...restantes.slice(i + 1)];
+          permutar(novaPrefixo, novaLista);
+        }
+      }
+
+      permutar('', letras);
+      return Array.from(combinacoes).slice(0, 10);
+    }
+
+    function executarExercicio1() {
+      const entrada = document.getElementById('entradaNumeros').value;
+      const numeros = entrada.split(',').map(num => parseFloat(num.trim()));
+      const resultado = processarNumeros(numeros);
+      document.getElementById('resultado1').textContent = resultado;
+    }
+
+    function executarExercicio2() {
+      const entrada = document.getElementById('entradaLetras').value;
+      const letras = entrada.split(',').map(letra => letra.trim().toUpperCase());
+      const resultado = gerarPalavras(letras);
+      document.getElementById('resultado2').textContent = resultado.join(', ');
+    }
+  </script>
+</body>
+</html>
