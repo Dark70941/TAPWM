@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos FATEC Sorocaba</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .course-info {
+            padding: 20px;
+            background-color: #e9e9e9;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Cursos FATEC Sorocaba</h1>
+    <label for="courses">Escolha um curso:</label>
+    <select id="courses">
+        <option value="">-- Selecione --</option>
+        <option value="ADS">Análise e Desenvolvimento de Sistemas</option>
+        <option value="DS-AMS">Desenvolvimento de Sistemas – AMS</option>
+        <option value="EA">Eletrônica Automotiva</option>
+        <option value="FM">Fabricação Mecânica</option>
+        <option value="GQ">Gestão da Qualidade</option>
+        <option value="GE-EAD">Gestão Empresarial – EAD</option>
+        <option value="LOG">Logística</option>
+        <option value="LOG-AMS">Logística – AMS</option>
+        <option value="MA">Manufatura Avançada</option>
+        <option value="MAeronaves">Manutenção de Aeronaves</option>
+        <option value="POL">Polímeros</option>
+        <option value="PMet">Processos Metalúrgicos</option>
+        <option value="PMech">Projetos Mecânicos</option>
+        <option value="SB">Sistemas Biomédicos</option>
+    </select>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectElement = document.getElementById('courses');
+
+        selectElement.onchange = function() {
+            const selectedValue = this.value;
+            const selectedText = this.options[this.selectedIndex].text;
+
+            if (selectedValue === "") {
+                return;
+            }
+
+            const confirmOpen = confirm(`Você escolheu o curso de "${selectedText}". Deseja abrir a página de informações?`);
+
+            if (confirmOpen) {
+                const infoWindow = window.open("", "_blank", "width=600,height=300");
+                
+                let courseInfo = "";
+
+                switch (selectedValue) {
+                    case "ADS":
+                        courseInfo = "<h3>Análise e Desenvolvimento de Sistemas</h3><p>O tecnólogo em Análise e Desenvolvimento de Sistemas projeta, documenta, especifica, testa, implanta e mantém sistemas computacionais de informação.</p>";
+                        break;
+                    case "DS-AMS":
+                        courseInfo = "<h3>Desenvolvimento de Sistemas – AMS</h3><p>O profissional analisa e projeta sistemas. Constrói, documenta, realiza testes e mantém sistemas de informação, utilizando linguagens de programação e ambientes de desenvolvimento específicos.</p>";
+                        break;
+                    case "EA":
+                        courseInfo = "<h3>Eletrônica Automotiva</h3><p>A formação em Eletrônica Automotiva capacita o profissional para atuar em empresas da área automotiva, com foco em eletrônica embarcada, manufatura e manutenção.</p>";
+                        break;
+                    case "FM":
+                        courseInfo = "<h3>Fabricação Mecânica</h3><p>O tecnólogo em Fabricação Mecânica gerencia processos produtivos, otimiza projetos e supervisiona atividades de manutenção de sistemas mecânicos.</p>";
+                        break;
+                    case "GQ":
+                        courseInfo = "<h3>Gestão da Qualidade</h3><p>O profissional em Gestão da Qualidade elabora e gerencia estratégias para a obtenção de certificações, garantia e auditoria de qualidade em empresas de diversos setores.</p>";
+                        break;
+                    case "GE-EAD":
+                        courseInfo = "<h3>Gestão Empresarial – EAD</h3><p>O tecnólogo em Gestão Empresarial atua no planejamento de atividades e recursos, na organização do trabalho e na gestão de pessoas, com foco na visão geral de uma empresa.</p>";
+                        break;
+                    case "LOG":
+                        courseInfo = "<h3>Logística</h3><p>O tecnólogo em Logística é especializado em armazenagem, distribuição e transporte. Planeja e coordena a movimentação de bens, serviços e informações ao longo da cadeia de suprimentos.</p>";
+                        break;
+                    case "LOG-AMS":
+                        courseInfo = "<h3>Logística – AMS</h3><p>O curso prepara o aluno para gerenciar operações logísticas e entender os custos envolvidos em cada atividade, podendo atuar em indústrias, comércios e empresas de transporte.</p>";
+                        break;
+                    case "MA":
+                        courseInfo = "<h3>Manufatura Avançada</h3><p>O curso, inédito no Brasil, atende à Indústria 4.0 com a finalidade de integrar novos processos nas indústrias, com foco em automação e novas tecnologias.</p>";
+                        break;
+                    case "MAeronaves":
+                        courseInfo = "<h3>Manutenção de Aeronaves</h3><p>Este curso superior capacita profissionais para atuar na manutenção e reparo de aeronaves, com foco em sistemas, estruturas e motores, seguindo as normas de segurança.</p>";
+                        break;
+                    case "POL":
+                        courseInfo = "<h3>Polímeros</h3><p>O tecnólogo em Polímeros trabalha na fabricação de materiais plásticos e compósitos, avaliando suas características químicas e físicas para diferentes aplicações industriais.</p>";
+                        break;
+                    case "PMet":
+                        courseInfo = "<h3>Processos Metalúrgicos</h3><p>Este curso forma profissionais para atuar na produção e transformação de metais, desde a extração até a soldagem e conformação mecânica.</p>";
+                        break;
+                    case "PMech":
+                        courseInfo = "<h3>Projetos Mecânicos</h3><p>O profissional em Projetos Mecânicos domina a técnica de criação de dispositivos e ferramentas, desde a concepção até a especificação de fornecedores, para a indústria mecânica.</p>";
+                        break;
+                    case "SB":
+                        courseInfo = "<h3>Sistemas Biomédicos</h3><p>O curso capacita o profissional a planejar e gerenciar equipamentos médico-assistenciais em hospitais e clínicas, além de realizar manutenções e integrar equipes de pesquisa.</p>";
+                        break;
+                }
+
+                infoWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html lang="pt-BR">
+                    <head>
+                        <title>${selectedText}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 20px; }
+                            h3 { color: #333; }
+                            p { color: #555; }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Informações do Curso</h1>
+                        <div class="course-info">
+                            ${courseInfo}
+                        </div>
+                    </body>
+                    </html>
+                `);
+                infoWindow.document.close();
+            }
+        };
+    });
+</script>
+
+</body>
+</html>
